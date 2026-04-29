@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>과기대 학생회 팜플렛</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    /* 폰트 적용 */
+    @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+    body {
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+    }
+    
+    /* 카드뉴스 테마 배경 패턴 */
+    .grid-pattern {
+      background-color: #FCFBF5; 
+      background-image: linear-gradient(#E8E6DA 1px, transparent 1px), linear-gradient(90deg, #E8E6DA 1px, transparent 1px);
+      background-size: 24px 24px;
+      background-position: -1px -1px;
+    }
+    .memo-grid-pattern {
+      background-color: #F1F4EA; 
+      background-image: linear-gradient(#DDE2D4 1px, transparent 1px), linear-gradient(90deg, #DDE2D4 1px, transparent 1px);
+      background-size: 16px 16px;
+      background-position: -1px -1px;
+    }
+
+    /* 스크롤바 디자인 */
+    .scrollbar-custom::-webkit-scrollbar { width: 8px; }
+    .scrollbar-custom::-webkit-scrollbar-thumb { background-color: #D1D5DB; border-radius: 9999px; }
+
+    /* 클릭 애니메이션 */
+    .fade-in { animation: fadeIn 0.2s ease-in-out; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gray-300 p-4 md:p-8 text-gray-800 flex flex-col items-center space-y-12 selection:bg-[#FDE68A]">
+
+  <!-- 안내 문구 -->
+  <div class="text-center max-w-2xl bg-white p-4 rounded-xl shadow-md border-t-4 border-[#FDE68A] w-full">
+    <h1 class="text-xl font-bold text-gray-800 mb-2">과기대 학생회 팜플렛 (모바일 최적화)</h1>
+    <p class="text-sm text-gray-500 tracking-tight">
+      각 카드(전공, 과목, 동아리)를 터치하시면 숨겨진 상세 내용이 펼쳐집니다.
+    </p>
+  </div>
+
+  <!-- =========================================
+      팜플렛 겉면 (접었을 때 바깥쪽) 
+  ========================================= -->
+  <div class="w-full max-w-6xl md:h-[800px] rounded-lg shadow-2xl overflow-hidden flex flex-col md:flex-row border-2 border-gray-200 bg-white">
+    
+    <!-- 1. 안쪽 날개 (왼쪽 면) : 전공 학생회 소개 -->
+    <div class="w-full md:w-1/3 p-8 border-r-2 border-gray-200 relative overflow-y-auto scrollbar-custom grid-pattern">
+      <div class="mb-8 inline-block">
+        <div class="bg-white border-2 border-[#E2E8CE] px-3 py-1 shadow-[2px_2px_0px_rgba(0,0,0,0.05)] inline-block text-xl">
+          <h2 class="font-bold text-gray-800">전공 학생회 소개</h2>
+        </div>
+      </div>
+      <div class="space-y-6 relative z-10">
+        <!-- 전공 카드들 -->
+        <div class="toggle-card flex flex-col relative pl-4 cursor-pointer select-none group">
+          <div class="absolute left-0 top-1.5 w-2 h-2 rounded-full bg-[#C26D53] group-hover:scale-125 transition-transform"></div>
+          <div class="flex items-center justify-between mb-1">
+            <span class="bg-[#FDE68A] px-1 rounded-sm leading-tight inline-block shadow-sm text-sm font-bold">디지털소프트웨어공학부</span>
+            <i data-lucide="chevron-down" class="icon-down w-4 h-4 text-gray-400"></i><i data-lucide="chevron-up" class="icon-up w-4 h-4 text-gray-400 hidden"></i>
+          </div>
+          <div class="toggle-content hidden bg-white/80 p-3 rounded shadow-sm border border-gray-100 mt-2">
+            <ul class="text-[13px] text-gray-600 space-y-1.5 ml-4 list-disc marker:text-gray-300 font-medium">
+              <li>재학생: 20명 / 졸업생: 15명</li><li>서울 주요 명문대, 의/약/한의/수의대</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="toggle-card flex flex-col relative pl-4 cursor-pointer select-none group">
+          <div class="absolute left-0 top-1.5 w-2 h-2 rounded-full bg-[#C26D53] group-hover:scale-125 transition-transform"></div>
+          <div class="flex items-center justify-between mb-1">
+            <span class="bg-[#FDE68A] px-1 rounded-sm leading-tight inline-block shadow-sm text-sm font-bold">바이오공학전공</span>
+            <i data-lucide="chevron-down" class="icon-down w-4 h-4 text-gray-400"></i><i data-lucide="chevron-up" class="icon-up w-4 h-4 text-gray-400 hidden"></i>
+          </div>
+          <div class="toggle-content hidden bg-white/80 p-3 rounded shadow-sm border border-gray-100 mt-2">
+            <ul class="text-[13px] text-gray-600 space-y-1.5 ml-4 list-disc marker:text-gray-300 font-medium">
+              <li>재학생: 70명 / 졸업생: 55명</li><li>서울 및 수도권 주요 명문대</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="toggle-card flex flex-col relative pl-4 cursor-pointer select-none group">
+          <div class="absolute left-0 top-1.5 w-2 h-2 rounded-full bg-[#C26D53] group-hover:scale-125 transition-transform"></div>
+          <div class="flex items-center justify-between mb-1">
+            <span class="bg-[#FDE68A] px-1 rounded-sm leading-tight inline-block shadow-sm text-sm font-bold">수학전공</span>
+            <i data-lucide="chevron-down" class="icon-down w-4 h-4 text-gray-400"></i><i data-lucide="chevron-up" class="icon-up w-4 h-4 text-gray-400 hidden"></i>
+          </div>
+          <div class="toggle-content hidden bg-white/80 p-3 rounded shadow-sm border border-gray-100 mt-2">
+            <ul class="text-[13px] text-gray-600 space-y-1.5 ml-4 list-disc marker:text-gray-300 font-medium">
+              <li>학생부종합전형 최적화</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="toggle-card flex flex-col relative pl-4 cursor-pointer select-none group">
+          <div class="absolute left-0 top-1.5 w-2 h-2 rounded-full bg-[#C26D53] group-hover:scale-125 transition-transform"></div>
+          <div class="flex items-center justify-between mb-1">
+            <span class="bg-[#FDE68A] px-1 rounded-sm leading-tight inline-block shadow-sm text-sm font-bold">식품영양학전공</span>
+            <i data-lucide="chevron-down" class="icon-down w-4 h-4 text-gray-400"></i><i data-lucide="chevron-up" class="icon-up w-4 h-4 text-gray-400 hidden"></i>
+          </div>
+          <div class="toggle-content hidden bg-white/80 p-3 rounded shadow-sm border border-gray-100 mt-2">
+            <ul class="text-[13px] text-gray-600 space-y-1.5 ml-4 list-disc marker:text-gray-300 font-medium">
+              <li>재학생: 20명 / 졸업생: 15명</li><li>서울 주요 명문대, 의/약/한의/수의대</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="toggle-card flex flex-col relative pl-4 cursor-pointer select-none group">
+          <div class="absolute left-0 top-1.5 w-2 h-2 rounded-full bg-[#C26D53] group-hover:scale-125 transition-transform"></div>
+          <div class="flex items-center justify-between mb-1">
+            <span class="bg-[#FDE68A] px-1 rounded-sm leading-tight inline-block shadow-sm text-sm font-bold">정보통계학전공</span>
+            <i data-lucide="chevron-down" class="icon-down w-4 h-4 text-gray-400"></i><i data-lucide="chevron-up" class="icon-up w-4 h-4 text-gray-400 hidden"></i>
+          </div>
+          <div class="toggle-content hidden bg-white/80 p-3 rounded shadow-sm border border-gray-100 mt-2">
+            <ul class="text-[13px] text-gray-600 space-y-1.5 ml-4 list-disc marker:text-gray-300 font-medium">
+              <li>재학생: 70명 / 졸업생: 55명</li><li>서울 및 수도권 주요 명문대</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="toggle-card flex flex-col relative pl-4 cursor-pointer select-none group">
+          <div class="absolute left-0 top-1.5 w-2 h-2 rounded-full bg-[#C26D53] group-hover:scale-125 transition-transform"></div>
+          <div class="flex items-center justify-between mb-1">
+            <span class="bg-[#FDE68A] px-1 rounded-sm leading-tight inline-block shadow-sm text-sm font-bold">화학전공</span>
+            <i data-lucide="chevron-down" class="icon-down w-4 h-4 text-gray-400"></i><i data-lucide="chevron-up" class="icon-up w-4 h-4 text-gray-400 hidden"></i>
+          </div>
+          <div class="toggle-content hidden bg-white/80 p-3 rounded shadow-sm border border-gray-100 mt-2">
+            <ul class="text-[13px] text-gray-600 space-y-1.5 ml-4 list-disc marker:text-gray-300 font-medium">
+              <li>학생부종합전형 최적화</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. 뒷면 (가운데 면) : 학생회 정보 -->
+    <div class="w-full md:w-1/3 bg-[#3F403D] p-8 text-white flex flex-col items-center justify-center relative overflow-y-auto scrollbar-custom">
+      <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px); background-size: 24px 24px;"></div>
+
+      <div class="relative z-10 flex flex-col items-center w-full my-auto py-8">
+        <h2 class="text-lg font-medium mb-1 text-center text-gray-200">제6대 과학기술대학 학생회</h2>
+        
+        <div class="mb-10 w-48 h-48 mt-4 relative flex items-center justify-center">
+          <img src="로고흰색배경투명.png" alt="IDEA 로고" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="hidden flex-col items-center justify-center w-full h-full border-2 border-dashed border-gray-400 rounded-full bg-white/5">
+            <span class="text-xs text-gray-300 mb-1">로고흰색배경투명.png</span>
+          </div>
+        </div>
+
+        <div class="w-full space-y-4 text-center">
+          <div class="bg-white/10 p-3 rounded-lg backdrop-blur-sm">
+            <span class="bg-[#FDE68A] text-gray-800 font-bold px-2 rounded-sm text-sm leading-tight inline-block shadow-sm">학생회실</span>
+            <div class="text-gray-100 mt-2 text-sm font-medium">덕성여자대학교 학생회관 320호</div>
+          </div>
+          
+          <div class="bg-white/10 p-3 rounded-lg backdrop-blur-sm">
+            <span class="bg-[#FDE68A] text-gray-800 font-bold px-2 rounded-sm text-sm leading-tight inline-block shadow-sm">이메일</span>
+            <div class="text-gray-100 mt-2 text-sm font-medium tracking-wide">dswu.scitech@gmail.com</div>
+          </div>
+        </div>
+
+        <div class="mt-10 w-full">
+          <div class="text-center font-bold text-sm mb-4">
+            <span class="bg-white text-gray-800 px-3 py-1 rounded-full leading-tight inline-block shadow-sm">소통 채널</span>
+          </div>
+          <div class="flex justify-center space-x-6">
+            <div class="flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded flex items-center justify-center mb-2 border-2 border-dashed border-gray-400 p-1">
+                <div class="w-full h-full bg-gray-200 flex items-center justify-center text-xs text-gray-500 font-bold">QR</div>
+              </div>
+              <span class="text-[11px] text-gray-300 font-medium">카카오톡 채널</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded flex items-center justify-center mb-2 border-2 border-dashed border-gray-400 p-1">
+                 <div class="w-full h-full bg-gray-200 flex items-center justify-center text-xs text-gray-500 font-bold">QR</div>
+              </div>
+              <span class="text-[11px] text-gray-300 font-medium">공식 인스타그램</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. 표지 (오른쪽 면) -->
+    <div class="w-full md:w-1/3 p-8 flex flex-col justify-between relative overflow-y-auto scrollbar-custom grid-pattern">
+      <div class="text-right">
+        <span class="text-2xl text-gray-400 font-bold tracking-widest">2026</span>
+      </div>
+      
+      <div class="mt-12 relative z-10 flex flex-col items-center">
+        <div class="relative mb-6">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-8 bg-[#F3EACB] opacity-90 shadow-sm z-10" style="rotate: -3deg; clip-path: polygon(2% 0, 98% 0, 100% 100%, 0% 100%);"></div>
+          <div class="bg-white border-2 border-[#E2E8CE] px-6 py-2 shadow-sm relative z-0">
+            <h2 class="text-xl font-bold text-gray-600 tracking-wide">Epilogue</h2>
+          </div>
+        </div>
+        <h1 class="text-5xl font-black text-gray-800 text-center leading-tight tracking-tighter">
+          전격<br/>과기대 시점
+        </h1>
+      </div>
+
+      <div class="flex-grow flex items-center justify-center my-8 opacity-90 min-h-[160px]">
+         <i data-lucide="puzzle" class="w-40 h-40 text-[#F5B041] fill-[#FDE68A]" stroke-width="1.5"></i>
+      </div>
+
+      <div class="text-center mt-auto z-10 pb-4">
+         <div class="w-40 h-16 mx-auto relative flex items-center justify-center mb-2">
+           <img src="로고가로배경투명.png" alt="IDEA 가로 로고" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+           <div class="hidden items-center justify-center w-full h-full border-2 border-dashed border-gray-400 rounded bg-white/50">
+             <span class="text-xs text-gray-500 font-medium">로고가로배경투명.png</span>
+           </div>
+         </div>
+         <p class="text-xs text-gray-600 mt-2 font-semibold tracking-tighter">아이디어를 담아내는 공간, 조화로운 질서 속에 새로운 이데아를 직조하다</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================
+      팜플렛 안면 (펼쳤을 때 안쪽 전체)
+  ========================================= -->
+  <div class="w-full max-w-6xl md:h-[800px] bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col md:flex-row border-2 border-gray-200">
+    
+    <!-- 1. 왼쪽 면 : 전공탐색과목 -->
+    <div class="w-full md:w-1/3 p-8 border-r-2 border-gray-200 overflow-y-auto scrollbar-custom grid-pattern">
+      <div class="mb-8">
+        <div class="bg-white border-2 border-[#E2E8CE] px-3 py-1 shadow-[2px_2px_0px_rgba(0,0,0,0.05)] inline-block text-xl">
+          <h2 class="font-bold text-gray-800">전공탐색과목</h2>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <!-- 과목 섹션: 디소 -->
+        <div class="mb-5">
+          <h3 class="text-sm font-bold text-gray-700 mb-2 flex items-center">
+             <span class="w-1.5 h-1.5 bg-[#E2E8CE] inline-block mr-2"></span>디지털소프트웨어공학부
+          </h3>
+          <div class="space-y-3 pl-3 border-l-2 border-[#E2E8CE]/50 ml-0.5">
+            <div class="toggle-card bg-white p-3 pt-4 shadow-sm border border-gray-100 relative mt-4 cursor-pointer select-none hover:border-[#E2E8CE] transition-colors">
+              <div class="absolute -top-2 -left-2 bg-[#E2E8CE] text-[11px] font-bold px-2 py-0.5 shadow-sm text-gray-700">컴퓨터과학개론</div>
+              <div class="absolute top-2 right-2"><i data-lucide="chevron-down" class="icon-down w-4 h-4 text-gray-400"></i><i data-lucide="chevron-up" class="icon-up w-4 h-4 text-gray-400 hidden"></i></div>
+              <div class="w-full">
+                <p class="default-text text-[11px] text-gray-400 mt-1 font-medium tracking-tight">터치해서 상세 설명 보기</p>
+                <p class="toggle-content hidden text-[13px] text-gray-600 leading-relaxed mt-1 font-medium break-keep">컴퓨터의 동작 원리, 인터넷과 데이터 처리 과정을 이해하고 <span class="bg-[#FDE68A] px-1 rounded-sm leading-tight inline-block shadow-sm">최신 ICT 트렌드</span>까지 폭넓게 다루는 수업</p>
+              </div>
+            </div>
+            <div class="toggle-card bg-white p-3 pt-4 shadow-sm border border-gray-100 relative mt-4 cursor-pointer select-none hover:border-[#E2E8CE] transition-colors">
+              <div class="absolute -top-2 -left-2 bg-[#E2E8CE] text-[11px] font-bold px-2 py-0.5 shadow-sm text-gray-700">프로그래밍개론</div>
+              <div class="absolute top-2 right-2"><i data-lucide="chevron-down" class="icon-down w-4 h-4 text-gray-400"></i><i data-lucide="chevron-up" class="icon-up w-4 h-4 text-gray-400 hidden"></i></div>
+              <div class="w-full">
+                <p class="default-text text-[11px] text-gray-400 mt-1 font-medium tracking-tight">터치해서 상세 설명 보기</p>
+                <p class="toggle-content hidden text-[13px] text-gray-600 leading-relaxed mt-1 font-medium break-keep">C언어를 기초부터 다지는 실습 중심 입문 과목. 직접 코드를 작성하며 <span class="bg-[#FDE68A] px-1 rounded-sm leading-tight inline-block shadow-sm">핵심 문법</span>에 대한 체력을 쌓는 수업</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 과목 섹션: 바이오 -->
+        <div class="mb-5">
+          <h3 class="text-sm font-bold text-gray-700 mb-2 flex items-center">
+             <span class="w-1.5 h-1.5 bg-[#E2E8CE] inline-block mr-2"></span>바이오공학전공
+          </h3>
+          <div class="space-y-3 pl-3 border-l-2 border-[#E2E8CE]/50 ml-0.5">
+            <div class="toggle-card bg-white p-3 pt-4 shadow-sm border border-gray-100 relative mt-4 cursor-pointer select-none hover:border-[#E2E8CE] transition-colors">
+              <div class="absolute -top-2 -left-2 bg-[#E2E8CE] text-[11px] font-bold px-2 py-0.5 shadow-sm text-gray-700">세포와에너지</div>
+              <div class="absolute top-2 right-2"><i data-lucide="chevron-down" class="icon-down w-4 h-4 text-gray-400"></i><i data-lucide="chevron-up" class="icon-up w-4 h-4 text-gray-400 hidden"></i></div>
+              <div class="w-full">
+                <p class="default-text text-[11px] text-gray-400 mt-1 font-medium tracking-tight">터치해서 상세 설명 보기</p>
+                <p class="toggle-content hidden text-[13px] text-gray-600 leading-relaxed mt-1 font-medium break-keep">세포 수준에서 본 생명체의 구성과 작동 원리, 그리고 <span class="bg-[#FDE68A] px-1 rounded-sm leading-tight inline-block shadow-sm">유전의 원리</span>에 대해 알아보며 기초를 다지는 수업</p>
+              </div>
+            </div>
+            <div class="toggle-card bg-white p-3 pt-4 shadow-sm border border-gray-100 relative mt-4 cursor-pointer select-none hover:border-[#E2E8CE] transition-colors">
+              <div class="absolute -top-2 -left-2 bg-[#E2E8CE] text-[11px] font-bold px-2 py-0.5 shadow-sm text-gray-700">생명체구조와기능</div>
+              <div class="absolute top-2 right-2"><i data-lucide="chevron-down" class="icon-down w-4 h-4 text-gray-400"></i><i data-lucide="chevron-up" class="icon-up w-4 h-4 text-gray-400 hidden"></i></div>
+              <div class="w-full">
+                <p class="default-text text-[11px] text-gray-400 mt-1 font-medium tracking-tight">터치해서 상세 설명 보기</p>
+                <p class="toggle-content hidden text-[13px] text-gray-600 leading-relaxed mt-1 font-medium break-keep">다세포 생명체에서 나타나는 현상과 그 원리를 학습하고, <span class="bg-[#FDE68A] px-1 rounded-sm leading-tight inline-block shadow-sm">동식물의 구조와 기능</span>을 이해하는 수업</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 과목 섹션: 수학 -->
+        <div class="mb-5">
+          <h3 class="text-sm font-bold text-gray-700 mb-2 flex items-center">
+             <span class="w-1.5 h-1.5 bg-[#E2E8CE] inline-block mr-2"></span>수학전공
+          </h3>
+          <div class="space-y-3 pl-3 border-l-2 border-[#E2E8CE]/50 ml-0.5">
+            <div class="toggle-card bg-white p-3 pt-4 shadow-sm border border-gray-100 relative mt-4 cursor-pointer select-none hover:border-[#E2E8CE] transition-colors">
+              <div class="absolute -top-2 -left-2 bg-[#E2E8CE] text-[11px] font-bold px-2 py-0.5 shadow-sm text-gray-700">수학의세계</div>
+              <div class="absolute top-2 right-2"><i data-lucide="chevron-down" class="icon-down w-4 h-4 text-gray-400"></i><i data-lucide="chevron-up" class="icon-up w-4 h-4 text-gray-400 hidden"></i></div>
+              <div class="w-full">
+                <p class="default-text text-[11px] text-gray-400 mt-1 font-medium tracking-tight">터치해서 상세 설명 보기</p>
+                <p class="toggle-content hidden text-[13px] text-gray-600 leading-relaxed mt-1 font-medium break-keep">시대 흐름에 맞춰 <span class="bg-[#FDE68A] px-1 rounded-sm leading-tight inline-block shadow-sm">해석학·대수학·기하학·위상수학</span> 네 분야를 넓게 다루는 강의</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 과목 섹션: 식영 -->
+        <div class="mb-5">
+          <h3 class="text-sm font-bold text-gray-700 mb-2 flex items-center">
+             <span class="w-1.5 h-1.5 bg-[#E2E8CE] inline-block mr-2"></span>식품영양학전공
+          </h3>
+          <div class="space-y-3 pl-3 border-l-2 border-[#E2E8CE]/50 ml-0.5">
+            <div class="toggle-card bg-white p-3 pt-4 shadow-sm border border-gray-100 relative mt-4 cursor-pointer select-none hover:border-[#E2E8CE] transition-colors">
+              <div class="absolute -top-2 -left-2 bg-[#E2E8CE] text-[11px] font-bold px-2 py-0.5 shadow-sm text-gray-700">식품과학의기초</div>
+              <div class="absolute top-2 right-2"><i data-lucide="chevron-down" class="icon-down w-4 h-4 text-gray-400"></i><i data-lucide="chevron-up" class="icon-up w-4 h-4 text-gray-400 hidden"></i></div>
+              <div class="w-full">
+                <p class="default-text text-[11px] text-gray-400 mt-1 font-medium tracking-tight">터치해서 상세 설명 보기</p>
+                <p class="toggle-content hidden text-[13px] text-gray-600 leading-relaxed mt-1 font-medium break-keep">식품 성분과 특성을 중심으로 실생활에 밀접한 식품영양 <span class="bg-[#FDE68A] px-1 rounded-sm leading-tight inline-block shadow-sm">기초 개념</span>을 배우는 입문 과목</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 과목 섹션: 통계 -->
+        <div class="mb-5">
+          <h3 class="text-sm font-bold text-gray-700 mb-2 flex items-center">
+             <span class="w-1.5 h-1.5 bg-[#E2E8CE] inline-block mr-2"></span>정보통계학전공
+          </h3>
+          <div class="space-y-3 pl-3 border-l-2 border-[#E2E8CE]/50 ml-0.5">
+            <div class="toggle-card bg-white p-3 pt-4 shadow-sm border border-gray-100 relative mt-4 cursor-pointer select-none hover:border-[#E2E8CE] transition-colors">
+              <div class="absolute -top-2 -left-2 bg-[#E2E8CE] text-[11px] font-bold px-2 py-0.5 shadow-sm text-gray-700">통계학의 소개</div>
+              <div class="absolute top-2 right-2"><i data-lucide="chevron-down" class="icon-down w-4 h-4 text-gray-400"></i><i data-lucide="chevron-up" class="icon-up w-4 h-4 text-gray-400 hidden"></i></div>
+              <div class="w-full">
+                <p class="default-text text-[11px] text-gray-400 mt-1 font-medium tracking-tight">터치해서 상세 설명 보기</p>
+                <p class="toggle-content hidden text-[13px] text-gray-600 leading-relaxed mt-1 font-medium break-keep">통계학의 기본 원리를 배우고, <span class="bg-[#FDE68A] px-1 rounded-sm leading-tight inline-block shadow-sm">엑셀 실습</span>을 통해 실제 데이터에 적용하는 강의</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 과목 섹션: 화학 -->
+        <div class="mb-5">
+          <h3 class="text-sm font-bold text-gray-700 mb-2 flex items-center">
+             <span class="w-1.5 h-1.5 bg-[#E2E8CE] inline-block mr-2"></span>화학전공
+          </h3>
+          <div class="space-y-3 pl-3 border-l-2 border-[#E2E8CE]/50 ml-0.5">
+            <div class="toggle-card bg-white p-3 pt-4 shadow-sm border border-gray-100 relative mt-4 cursor-pointer select-none hover:border-[#E2E8CE] transition-colors">
+              <div class="absolute -top-2 -left-2 bg-[#E2E8CE] text-[11px] font-bold px-2 py-0.5 shadow-sm text-gray-700">최신일반화학</div>
+              <div class="absolute top-2 right-2"><i data-lucide="chevron-down" class="icon-down w-4 h-4 text-gray-400"></i><i data-lucide="chevron-up" class="icon-up w-4 h-4 text-gray-400 hidden"></i></div>
+              <div class="w-full">
+                <p class="default-text text-[11px] text-gray-400 mt-1 font-medium tracking-tight">터치해서 상세 설명 보기</p>
+                <p class="toggle-content hidden text-[13px] text-gray-600 leading-relaxed mt-1 font-medium break-keep">기초 이론을 이해하고 화학적 언어를 익히며, <span class="bg-[#FDE68A] px-1 rounded-sm leading-tight inline-block shadow-sm">문제 해결 능력</span>을 키우는 강의</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 2 & 3. 가운데 + 오른쪽 면 통합 -->
+    <div class="w-full md:w-2/3 p-8 flex flex-col overflow-y-auto scrollbar-custom grid-pattern">
+      
+      <!-- 전체: 전공 동아리 (메모장 테마) -->
+      <section class="flex-grow flex flex-col">
+        <div class="mb-6 flex items-end flex-wrap gap-2">
+          <div class="bg-white border-2 border-[#E2E8CE] px-3 py-1 shadow-[2px_2px_0px_rgba(0,0,0,0.05)] inline-block text-xl">
+            <h2 class="font-bold text-gray-800">전공 동아리</h2>
+          </div>
+          <span class="text-sm font-bold text-gray-500 bg-white/50 px-2 py-1 rounded mb-1 tracking-tight">터치해서 상세 설명을 확인하세요!</span>
+        </div>
+        
+        <!-- 동아리 그리드 맵핑 -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 flex-grow content-start pb-8" id="club-grid">
+          <!-- JS로 동아리 목록 자동 생성 -->
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script>
+    // 동아리 데이터 
+    const clubs = [
+      { name: 'quest', major: '디소', desc: 'quest' },
+      { name: 'aiot', major: '디소', desc: 'aiot' },
+      { name: 'backdoor', major: '디소', desc: 'backdoor' },
+      { name: 'synapse', major: '디소', desc: '시냅스' },
+      { name: 'GenEra', major: '바이오', desc: 'genera' },
+      { name: 'diana', major: '식영', desc: 'diana' },
+      { name: 'dcs', major: '화학', desc: '화학회' },
+      { name: 'dsap', major: '정통', desc: 'dsap' },
+      { name: '멋쟁이사자처럼', major: '디소', desc: '멋사' },
+      { name: 'umc', major: '디소', desc: 'umc' }
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. 동아리 목록 렌더링
+      const clubGrid = document.getElementById('club-grid');
+      clubs.forEach(club => {
+        const cardHtml = `
+          <div class="toggle-card relative p-3 shadow-md border border-[#E1E5D8] flex flex-col justify-center items-center text-center transform transition-transform hover:-translate-y-1 h-full cursor-pointer select-none memo-grid-pattern">
+            <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-12 h-4 bg-[#F3EACB] opacity-80 shadow-sm" style="rotate: -4deg; clip-path: polygon(5% 0, 95% 0, 100% 100%, 0% 100%);"></div>
+            
+            <div class="flex items-center justify-center w-full mb-1 mt-1">
+              <i data-lucide="check" class="w-4 h-4 text-[#C26D53] mr-0.5 stroke-[3]"></i>
+              <span class="font-bold text-gray-800 text-sm whitespace-nowrap">${club.name}</span>
+            </div>
+            <span class="bg-[#FFF8CC] px-1 rounded-sm leading-tight inline-block shadow-sm text-[11px] text-gray-600 font-semibold">${club.major}</span>
+            
+            <i data-lucide="chevron-down" class="icon-down w-4 h-4 text-[#C26D53] opacity-50 mt-1"></i>
+            <i data-lucide="chevron-up" class="icon-up w-4 h-4 text-[#C26D53] opacity-50 mt-1 hidden"></i>
+            
+            <p class="toggle-content hidden text-[12px] text-gray-700 leading-tight break-keep mt-2 pt-2 border-t border-[#DDE2D4] w-full font-medium">${club.desc}</p>
+          </div>
+        `;
+        clubGrid.insertAdjacentHTML('beforeend', cardHtml);
+      });
+
+      // 2. Lucide 아이콘 활성화
+      lucide.createIcons();
+
+      // 3. 토글(아코디언) 기능 연결
+      const toggleCards = document.querySelectorAll('.toggle-card');
+      toggleCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const content = card.querySelector('.toggle-content');
+          const iconDown = card.querySelector('.icon-down');
+          const iconUp = card.querySelector('.icon-up');
+          const defaultText = card.querySelector('.default-text');
+
+          if (content.classList.contains('hidden')) {
+            content.classList.remove('hidden');
+            content.classList.add('fade-in');
+            if (iconDown) iconDown.classList.add('hidden');
+            if (iconUp) iconUp.classList.remove('hidden');
+            if (defaultText) defaultText.classList.add('hidden');
+          } else {
+            content.classList.add('hidden');
+            content.classList.remove('fade-in');
+            if (iconDown) iconDown.classList.remove('hidden');
+            if (iconUp) iconUp.classList.add('hidden');
+            if (defaultText) defaultText.classList.remove('hidden');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
